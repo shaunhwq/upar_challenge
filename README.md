@@ -1,5 +1,25 @@
 ## Channel-Aware Cross-Fused Transformer-style Networks (C2T-Net)
 
+### Installation
+```
+conda create -n upar_challenge python=3.8
+conda activate upar_challenge
+pip3 install -r requirements.txt
+```
+
+### Running
+
+Download weights:
+
+- [Author's Weights](https://drive.google.com/file/d/1YCHeRhEPcyb6fD9byi3flNFSQDsY2qA0/view) into ./checkpoints
+
+- [Swin](https://objects.githubusercontent.com/github-production-release-asset-2e65be/357198522/0ab5f100-9bd4-11eb-9cf0-74aa017d90b5?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20240726%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240726T075512Z&X-Amz-Expires=300&X-Amz-Signature=366e2fb93ad6950241bc24a0ef3d3001a04f9db0b6fe2332ef20689041abd5c0&X-Amz-SignedHeaders=host&actor_id=48981455&key_id=0&repo_id=357198522&response-content-disposition=attachment%3B%20filename%3Dswin_base_patch4_window7_224_22k.pth&response-content-type=application%2Foctet-stream) into ./pretrained
+```
+python3 demo_upar.py
+```
+
+### Author's Repo
+
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/c2t-net-channel-aware-cross-fused-transformer/pedestrian-attribute-recognition-on-pa-100k)](https://paperswithcode.com/sota/pedestrian-attribute-recognition-on-pa-100k?p=c2t-net-channel-aware-cross-fused-transformer)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/c2t-net-channel-aware-cross-fused-transformer/pedestrian-attribute-recognition-on-peta)](https://paperswithcode.com/sota/pedestrian-attribute-recognition-on-peta?p=c2t-net-channel-aware-cross-fused-transformer)
 
