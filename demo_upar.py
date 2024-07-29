@@ -70,7 +70,6 @@ class C2TNetHelper:
         textual_description = dict(
             age = ["Young", "Adult", "Old"][probabilities[:3].index(max(probabilities[:3]))],
             gender = "Female" if probabilities[3] > 0.5 else "Male",
-            hair_length = ["Short", "Long", "Bald"][probabilities[4: 7].index(max(probabilities[4: 7]))],
             upper_body_length = "Short" if probabilities[7] > 0.5 else "Long",
             upper_body_color = ["Black", "Blue", "Brown", "Green", "Grey", "Orange", "Pink", "Purple", "Red", "White", "Yellow", "Other"][probabilities[8: 20].index(max(probabilities[8: 20]))],
             lower_body_length = "Short" if probabilities[20] > 0.5 else "Long",
@@ -78,16 +77,25 @@ class C2TNetHelper:
             lower_body_type = ["Trousers & Shorts", "Skirt & Dress"][probabilities[33: 35].index(max(probabilities[33: 35]))],
             backpack = True if probabilities[35] > 0.5 else False,
             bag = True if probabilities[36] > 0.5 else False,
+            hat = True if probabilities[39] > 0.5 else False
         )
+
+        # Resolve Glasses
         normal_glasses_prob = probabilities[37]
         sun_glasses_prob = probabilities[38]
         if normal_glasses_prob < 0.5 and sun_glasses_prob < 0.5:
             glasses = "None"
         else:
             glasses = ["Normal", "Sun"][0 if normal_glasses_prob > sun_glasses_prob else 1]
-
         textual_description["glasses"] = glasses
-        textual_description["hat"] = True if probabilities[39] > 0.5 else False
+
+        # Resolve Hair Length
+        if max(probabilities[4: 7]) < 0.5:
+            hair_length = "Unknown"
+        else:
+            hair_length = ["Short", "Long", "Bald"][probabilities[4: 7].index(max(probabilities[4: 7]))]
+        textual_description["hair_length"] = hair_length
+
         return textual_description
 
     def pre_process(self, image: np.array):
